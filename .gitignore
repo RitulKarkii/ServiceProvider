@@ -1,0 +1,10 @@
+# Angular
+crm_project/node_modules
+crm_project/dist
+
+# Laravel
+crm_project_api/vendor
+crm_project_api/.env
+
+# System
+.DS_Store
