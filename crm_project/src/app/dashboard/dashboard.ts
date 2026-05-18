@@ -3,11 +3,12 @@ import { Features } from '../features';
 import { CommonModule, NgFor  } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Navbar } from '../navbar/navbar';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor,ReactiveFormsModule, CommonModule],
+  imports: [NgFor,ReactiveFormsModule, CommonModule,Navbar],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

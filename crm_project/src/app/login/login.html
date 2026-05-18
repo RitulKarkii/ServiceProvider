@@ -8,10 +8,16 @@
                         <div>
                             <label for="email">Email</label>
                             <input type="text" class="form-control" formControlName="email">
+                            <small class="text-danger" *ngIf="loginForm.get('email')?.errors?.['required']">
+                                Email feild is required.
+                            </small>
                         </div>
                         <div>
                             <label for="password">Password</label>
                             <input type="text" class="form-control" formControlName="password">
+                            <small class="text-danger" *ngIf="loginForm.get('password')?.errors?.['required']">
+                                Password is required.
+                            </small>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary mt-2">Submit</button>

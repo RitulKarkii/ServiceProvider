@@ -1,0 +1,93 @@
+<app-navbar></app-navbar>
+<button class="btn btn-primary mt-2 ms-2" (click)="openModel()">Add Service</button>
+
+<div class="container-fluid position-fixed  " *ngIf="showModel">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="serviceForm" (ngSubmit)="submit()">
+                        <div>
+                            <label for="serviceName">Service Name</label>
+                            <input type="text" class="form-control" formControlName="serviceName" >
+                        </div>
+                        <div>
+                            <label for="description"> Add Description</label>
+                            <textarea class="form-control" formControlName="description"></textarea>
+                        </div>
+                        <div>
+                            <label for="price">Add Price</label>
+                            <input type="number" class="form-control" formControlName="price">
+                        </div>
+                        <div>
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" formControlName="image" (change)="onFileChange($event)">
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary mt-2">Add</button>
+                            <button (click)="closeForm()" class="btn btn-danger mt-2">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- update Data -->
+
+<div class="container-fluid  position-fixed" *ngIf="showEditModel">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="updateForm" (ngSubmit)="update()">
+                        <div>
+                            <label for="serviceName">Service Name</label>
+                            <input type="text" class="form-control" formControlName="serviceName" >
+                        </div>
+                        <div>
+                            <label for="description"> Add Description</label>
+                            <textarea class="form-control" formControlName="description"></textarea>
+                        </div>
+                        <div>
+                            <label for="price">Add Price</label>
+                            <input type="number" class="form-control" formControlName="price">
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary mt-2">Update</button>
+                            <button (click)="close()" class="btn btn-danger mt-2">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+
+<div class="mt-2">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories">
+                <td>{{category.serviceName}}</td>
+                <td>{{category.description}}</td>
+                <td>{{category.price}}</td>
+                <td class="d-flex gap-2 ">
+                    <button class="btn btn-success" (click)="edit(category.id)">Update</button>
+                    <button class="btn btn-danger" (click)="delete(category.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

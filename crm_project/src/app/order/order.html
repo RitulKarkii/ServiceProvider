@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<table class="table table-bordered" *ngIf="orders.length">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders">
+            <td>
+                <img [src]="'http://127.0.0.1:8000/storage/' + order.image"  width="100"
+        height="100"
+        class="img-fluid rounded" alt="">
+            </td>
+            <td>{{order.serviceName}}</td>
+            <td>&#8377;{{order.price}}</td>
+            <td class="text-success fw-semibold">{{order.status}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!orders.length" class="text-center">
+    <h2>No booking yet!</h2>
+</div>
+
+

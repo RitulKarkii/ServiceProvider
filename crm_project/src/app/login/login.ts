@@ -3,11 +3,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Features } from '../features';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -15,7 +17,8 @@ export class Login {
   loginForm! : FormGroup;
 
   constructor(private service:Features,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ){}
 
   ngOnInit(){
@@ -26,7 +29,7 @@ export class Login {
   }
 
   submit(){
-    
+    // debugger;
     if(this.loginForm.invalid){
       this.loginForm.markAllAsTouched();
       return;
@@ -39,12 +42,14 @@ export class Login {
 
     this.service.loginUser(data).subscribe({
       next:(response:any)=>{
-       if (response?.token) {
-          localStorage.setItem('token', response.token);
-          this.router.navigate(['dashboard']);
-        } else {
-          console.error('Invalid response format');
-        }
+
+        localStorage.setItem('token',response.token);
+          localStorage.setItem('role', response.user.role);
+          localStorage.setItem('user_id', response.user.id);
+
+          this.toastr.success('Login Successful');
+          
+          this.router.navigate(['']);
       },
       error:(err:any)=>{
         console.error(err);

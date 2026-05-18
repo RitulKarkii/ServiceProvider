@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container mt-2">
     <div class="row">
         <div class="col-sm-4">
@@ -8,14 +9,42 @@
                         <div>
                             <label for="name">Name</label>
                             <input type="text" class="form-control" formControlName="name">
+                            <small class="text-danger" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.errors?.['required']" >
+                                Name is required.
+                            </small>
+                            <small class="text-danger"  *ngIf="registerForm.get('name')?.errors?.['minlength']">
+                                Minimum 3 characters required
+                            </small>
                         </div>
+
                         <div>
                             <label for="email">Email</label>
                             <input type="text" class="form-control" formControlName="email">
+                            <small class="text-danger" *ngIf="registerForm.get('email')?.errors?.['required']">
+                                Email is required
+                            </small>
+                            <small class="text-danger" *ngIf="registerForm.get('email')?.errors?.['email']">
+                                Invalid Email Format
+                            </small>
                         </div>
+
                         <div>
                             <label for="password">Password</label>
-                            <input type="password" class="form-control"formControlName="password" >
+                            <input type="password" class="form-control"formControlName="password">
+                            <small class="text-danger" *ngIf="registerForm.get('password')?.errors?.['required']">
+                                Password if required
+                            </small>
+                            <small class="test-danger" *ngIf="registerForm.get('password')?.errors?.['minlength']">
+                                Password should be atleast 4 characters
+                            </small>
+                        </div>
+                        <div *ngIf="role === 'admin'">
+                            <label for="role">Select Role</label>
+                            <select formControlName="role" class="form-control">
+                                <option value="">Select Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary mt-2">Submit</button>

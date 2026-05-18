@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -14,6 +15,7 @@ class AuthController extends Controller
             'name'=>'required',
             'email'=>'required',
             'password'=>'required',
+            'role'=>'required'
         ]);
         $isFirstUser = User::count() == 0;
         $role = $isFirstUser ? 'admin' : 'user';
@@ -46,8 +48,12 @@ class AuthController extends Controller
 
             return response()->json([
                 'message'=>'user Logged-In!',
-                'user'=>$user,
-                'token'=>$token
+                'user'=>[
+                    'id'=>$user->id,
+                    'name'=>$user->name,
+                    'role'=>$user->role
+                ],
+                'token'=> $token
             ]);
         }
 
@@ -55,4 +61,6 @@ class AuthController extends Controller
             'message'=>'Invalid Credentials'
         ],401);
     }
+
+  
 }

@@ -1,0 +1,79 @@
+<div class="container mt-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-sm-4">
+
+      <form [formGroup]="paymentForm" (ngSubmit)="submit()">
+
+        <!-- Card Holder Name -->
+
+        <div class="mb-3">
+
+          <label class="form-label" for="cardHolderName"> Card Holder Name</label>
+
+          <input type="text" class="form-control" formControlName="cardHolderName">
+
+        </div>
+
+        <!-- Card Number -->
+
+        <div class="mb-3">
+
+          <label class="form-label" for="card_number"> Card Number  </label>
+
+          <input  type="text" class="form-control" formControlName="card_number">
+
+        </div>
+
+        <!-- Expiry Date -->
+
+        <div class="mb-3">
+
+          <label class="form-label" for="expiry_date"> Expiry Date  </label>
+
+          <input type="month" class="form-control" formControlName="expiry_date">
+
+        </div>
+
+        <!-- CVV -->
+
+        <div class="mb-3">
+
+          <label class="form-label" for="cvv"> CVV  </label>
+
+          <input type="password" class="form-control" formControlName="cvv" >
+
+        </div>
+
+        <!-- Payment Method -->
+
+        <div class="mb-3">
+
+          <label class="form-label" class="payment_method"> Payment Method</label>
+
+          <select class="form-control" formControlName="payment_method">
+
+            <option value=""> Select </option>
+
+            <option value="Card">Card </option>
+
+            <option value="UPI">UPI </option>
+
+            <option value="Cash"> Cash</option>
+
+          </select>
+
+        </div>
+
+        <!-- Button -->
+
+        <button type="submit" class="btn btn-primary w-100">Pay Now</button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
