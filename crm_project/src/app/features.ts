@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class Features {
-  apiUrl = 'https://serviceprovider-production-b6ee.up.railway.app/api';;
+  apiUrl = 'https://serviceprovider-production-b6ee.up.railway.app';
 
   constructor(private http: HttpClient) {}
 

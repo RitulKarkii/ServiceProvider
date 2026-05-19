@@ -37,3 +37,4 @@ Route::delete('/delete/{id}',[BookingController::class,'delete']);
 // Payment
 Route::post('/payment',[PaymentController::class,'payment']);
 Route::get('order/{id}',[PaymentController::class,'order']);
+
