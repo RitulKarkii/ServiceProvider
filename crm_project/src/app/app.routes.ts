@@ -9,6 +9,7 @@ import { Booking } from './booking/booking';
 import { Payment } from './payment/payment';
 import { Cart } from './cart/cart';
 import { Order } from './order/order';
+import { ServiceExplore } from './service-explore/service-explore';
 
 export const routes: Routes = [
     { path : 'register', component: Register},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path : 'booking',component:Booking},
     { path : 'payment',component:Payment},
     { path: 'cart',component:Cart},
-    { path : 'order',component:Order}
+    { path : 'order',component:Order},
+    { path : 'explore',component:ServiceExplore}
 
 ];

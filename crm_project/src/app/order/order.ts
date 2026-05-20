@@ -11,6 +11,7 @@ import { Navbar } from '../navbar/navbar';
 })
 export class Order {
 orders:any[]=[];
+token : any ='';
   constructor( private service:Features,
     private cdr: ChangeDetectorRef
   ){}
@@ -20,6 +21,8 @@ orders:any[]=[];
     if(user){
       this.getData(Number(user));
     }
+
+    this.token = localStorage.getItem('token');
   }
 
   getData(id:number){

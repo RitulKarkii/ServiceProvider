@@ -8,7 +8,7 @@
                     <form [formGroup]="registerForm" (ngSubmit)="submit()">
                         <div>
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" formControlName="name">
+                            <input type="text" class="form-control" formControlName="name" placeholder="Ritul">
                             <small class="text-danger" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.errors?.['required']" >
                                 Name is required.
                             </small>
@@ -19,7 +19,7 @@
 
                         <div>
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" formControlName="email">
+                            <input type="text" class="form-control" formControlName="email"placeholder="ritul@gmail.com">
                             <small class="text-danger" *ngIf="registerForm.get('email')?.errors?.['required']">
                                 Email is required
                             </small>
@@ -30,7 +30,7 @@
 
                         <div>
                             <label for="password">Password</label>
-                            <input type="password" class="form-control"formControlName="password">
+                            <input type="password" class="form-control"formControlName="password" placeholder="....">
                             <small class="text-danger" *ngIf="registerForm.get('password')?.errors?.['required']">
                                 Password if required
                             </small>
@@ -47,7 +47,7 @@
                             </select>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                            <button type="submit" class="btn btn-dark mt-2">Submit</button>
                         </div>
                     </form>
                     <div>Already Have an Account?<a href="/login">click here</a></div>
